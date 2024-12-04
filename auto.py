@@ -7,6 +7,7 @@ import readimg
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pairs
+import pyautogui
 app = Flask(__name__)
 CORS(app)  # 允许所有来源的跨域请求
 os.environ["DISPLAY"] = ":0" 
