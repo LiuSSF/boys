@@ -24,6 +24,13 @@ def readnum():
         return result+result1
     except:
         return '00'
+@app.route('/pass', methods=['POST'])
+def pass_info():
+    # 模拟按键输入 PIN 码（逐个字符发送）
+    pin_code = "123356"
+    for digit in pin_code:
+        pyautogui.typewrite(digit)  # 输入每个数字
+        time.sleep(0.2)  # 模拟用户的自然输入延迟
 
 @app.route('/receive', methods=['POST'])
 def receive_info():
