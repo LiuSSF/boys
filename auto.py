@@ -32,6 +32,9 @@ def pass_info():
         pyautogui.typewrite(digit)  # 输入每个数字
         time.sleep(0.2)  # 模拟用户的自然输入延迟
 
+    # 返回响应
+    return jsonify({'status': 'success', 'message': 'PIN code typed'})
+
 @app.route('/receive', methods=['POST'])
 def receive_info():
     # 获取 JSON 数据
