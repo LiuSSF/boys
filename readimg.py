@@ -3,7 +3,7 @@ import os
 
 def readimg(img):
     # 加载模板库
-    template_folder = "card_templates2"
+    template_folder = "card_templates"
     templates = {}
 
     # 遍历模板文件夹，加载每张牌的模板
@@ -49,7 +49,7 @@ def readimg(img):
         
         # 获取匹配结果的最大值，作为匹配分数
         _, max_val, _, _ = cv2.minMaxLoc(result)
-        print(f"Matching score for {card_name}: {max_val}")  # 输出每个模板的匹配得分（调试信息）
+        #print(f"Matching score for {card_name}: {max_val}")  # 输出每个模板的匹配得分（调试信息）
 
         # 更新最佳匹配
         if max_val > best_match_score:

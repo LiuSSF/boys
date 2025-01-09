@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # 指定目录路径
-directory = "card_templates2"
+directory = "card_templates"
 
 # 遍历目录下所有文件
 for filename in os.listdir(directory):

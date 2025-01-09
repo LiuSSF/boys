@@ -30,3 +30,4 @@ def capture_chrome_window(x, y, width, height,filename):
 
 
 # 调用截图函数
+

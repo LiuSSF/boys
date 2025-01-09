@@ -5,6 +5,7 @@ import threading
 def is_in_top_pairs(pair):
     # 定义一组顶级牌对
     # 示例用法
+    print("pair:", pair)
     send_data_async(pair)
     top_pairs = [
         "AA", "AK","KA", "AQ", "QA","AJ","JA", "A10","10A",

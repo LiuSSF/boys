@@ -11,13 +11,13 @@ app = Flask(__name__)
 CORS(app)  # 允许所有来源的跨域请求
 os.environ["DISPLAY"] = ":0" 
 # openai()
-#result = readimg.readimg("12.png")
-
+#result = readimg.readimg("1.png")
+#print(result)
 def readnum():
     try:
-        screenshot.capture_chrome_window(548, 517, 20, 23, '1.png')
+        screenshot.capture_chrome_window(548, 517+18, 20, 23, '1.png')
         time.sleep(0.5)
-        screenshot.capture_chrome_window(548 + 26, 515, 20, 23, '2.png')
+        screenshot.capture_chrome_window(548 + 26, 515+18, 20, 23, '2.png')
         time.sleep(0.5)
         result = readimg.readimg('1.png')
         result1 = readimg.readimg('2.png')
@@ -35,6 +35,7 @@ def receive_info():
         # 提取数据内容，例如获取 "message" 键的值
         message = data.get('message', 'No message provided')
         num = readnum() # 识别牌面
+        print(num)
         ok = pairs.is_in_top_pairs(num) #检查是否在牌型中 有则返回True
         # 创建响应数据
         response = {
@@ -53,7 +54,7 @@ def receive_info():
     # 返回 JSON 响应
     return jsonify(response)
 if __name__ == '__main__':
-    # 查找并删除当前文件夹下的所有 PNG 文件
+    #查找并删除当前文件夹下的所有 PNG 文件
     for file_path in glob.glob('*.png'):
         os.remove(file_path)
         print(f"已删除: {file_path}")
