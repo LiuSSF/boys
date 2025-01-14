@@ -4,6 +4,7 @@ import glob
 import os
 import time
 import readimg
+from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pairs
@@ -21,6 +22,13 @@ def readnum():
         time.sleep(0.5)
         result = readimg.readimg('1.png')
         result1 = readimg.readimg('2.png')
+        # 检查1.png是否存在，存在则删除
+        if os.path.exists('1.png'):
+            os.remove('1.png')
+        
+        # 检查2.png是否存在，存在则删除
+        if os.path.exists('2.png'):
+            os.remove('2.png')
         return result+result1
     except:
         return '00'
@@ -32,25 +40,28 @@ def receive_info():
     print(data)
     # 检查数据是否有效
     if data:
+        # 获取当前时间
+        now = datetime.now()
         # 提取数据内容，例如获取 "message" 键的值
         message = data.get('message', 'No message provided')
         num = readnum() # 识别牌面
-        print(num)
+        print("num===========:",num,"----",now)
         ok = pairs.is_in_top_pairs(num) #检查是否在牌型中 有则返回True
         # 创建响应数据
+        print("ok=======",ok,"----",now)
+        #ok = True
         response = {
             'received': ok,
             'status': 'success',
             'message': f"Received: {message}"
         }
+        time.sleep(0.5)
     else:
         # 错误处理
         response = {
             'status': 'error',
             'message': 'No JSON data received'
         }
-    os.remove('1.png')
-    os.remove('2.png')
     # 返回 JSON 响应
     return jsonify(response)
 if __name__ == '__main__':

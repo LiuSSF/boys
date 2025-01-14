@@ -55,7 +55,6 @@ def readimg(img):
         if max_val > best_match_score:
             best_match_score = max_val
             best_match_name = card_name
-
     # 设置匹配阈值，例如0.4以上为匹配成功
     threshold = 0.5
     if best_match_score >= threshold:

